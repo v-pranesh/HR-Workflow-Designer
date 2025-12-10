@@ -106,3 +106,6 @@ npm run build
 - **Shadcn/ui** - Component library
 - **React Query** - Data fetching
 - **Zod** - Schema validation
+
+## Images
+<img width="1327" height="895" alt="image" src="https://github.com/user-attachments/assets/0bd2e705-7904-450c-8c82-5113739be6c4" />
