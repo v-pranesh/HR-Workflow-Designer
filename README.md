@@ -2,7 +2,7 @@
 
 A professional, production-quality visual workflow designer for creating and testing HR processes. Built with React, TypeScript, and React Flow.
 
-![HR Workflow Designer](https://lovable.dev/opengraph-image-p98pqg.png)
+![HR Workflow Designer]
 
 ## Features
 
