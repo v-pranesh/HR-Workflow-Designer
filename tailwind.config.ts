@@ -13,6 +13,9 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -57,6 +60,26 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        node: {
+          start: "hsl(var(--node-start))",
+          "start-light": "hsl(var(--node-start-light))",
+          task: "hsl(var(--node-task))",
+          "task-light": "hsl(var(--node-task-light))",
+          approval: "hsl(var(--node-approval))",
+          "approval-light": "hsl(var(--node-approval-light))",
+          automated: "hsl(var(--node-automated))",
+          "automated-light": "hsl(var(--node-automated-light))",
+          end: "hsl(var(--node-end))",
+          "end-light": "hsl(var(--node-end-light))",
+        },
+        canvas: {
+          DEFAULT: "hsl(var(--canvas-background))",
+          grid: "hsl(var(--canvas-grid))",
+        },
+        panel: {
+          DEFAULT: "hsl(var(--panel-background))",
+          border: "hsl(var(--panel-border))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -65,25 +88,32 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+        "fade-in": {
+          from: { opacity: "0" },
+          to: { opacity: "1" },
+        },
+        "slide-in-from-left": {
+          from: { transform: "translateX(-10px)", opacity: "0" },
+          to: { transform: "translateX(0)", opacity: "1" },
+        },
+        "pulse-ring": {
+          "0%, 100%": { boxShadow: "0 0 0 0 hsl(var(--primary) / 0.4)" },
+          "50%": { boxShadow: "0 0 0 8px hsl(var(--primary) / 0)" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "fade-in": "fade-in 0.3s ease-out",
+        "slide-in-from-left-2": "slide-in-from-left 0.3s ease-out",
+        "pulse-ring": "pulse-ring 2s ease-in-out infinite",
       },
     },
   },

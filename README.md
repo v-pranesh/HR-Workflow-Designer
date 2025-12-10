@@ -1,73 +1,108 @@
-# Welcome to your Lovable project
+# HR Workflow Designer Module
 
-## Project info
+A professional, production-quality visual workflow designer for creating and testing HR processes. Built with React, TypeScript, and React Flow.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+![HR Workflow Designer](https://lovable.dev/opengraph-image-p98pqg.png)
 
-## How can I edit this code?
+## Features
 
-There are several ways of editing your application.
+### Core Functionality
+- **Visual Canvas**: Drag-and-drop workflow design with React Flow
+- **Custom Nodes**: 5 specialized node types for HR workflows
+- **Real-time Editing**: Click any node to configure its properties
+- **Workflow Validation**: Validates workflow structure before testing
+- **Simulation Engine**: Test your workflow with mock execution
 
-**Use Lovable**
+### Node Types
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+| Node | Purpose | Configuration |
+|------|---------|---------------|
+| **Start** | Entry point of workflow | Title, metadata key-value pairs |
+| **Task** | Manual work items | Title, description, assignee, due date, custom fields |
+| **Approval** | Requires sign-off | Approver role (Manager/HRBP/Director), auto-approve threshold |
+| **Automated** | System actions | Action selection from API, dynamic parameters |
+| **End** | Workflow completion | End message, summary toggle |
 
-Changes made via Lovable will be committed automatically to this repo.
+## Project Structure
 
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```
+src/
+├── api/
+│   └── mockApi.ts           # Mock API for automations & simulation
+├── components/
+│   ├── NodeConfigPanel.tsx  # Right panel for editing nodes
+│   ├── NodePalette.tsx      # Draggable node items
+│   ├── Sidebar.tsx          # Left sidebar with actions
+│   ├── SimulationPanel.tsx  # Workflow testing dialog
+│   └── WorkflowCanvas.tsx   # React Flow canvas
+├── context/
+│   └── WorkflowContext.tsx  # Global workflow state management
+├── forms/
+│   ├── StartNodeForm.tsx    # Start node configuration
+│   ├── TaskNodeForm.tsx     # Task node configuration
+│   ├── ApprovalNodeForm.tsx # Approval node configuration
+│   ├── AutomatedNodeForm.tsx# Automated step configuration
+│   └── EndNodeForm.tsx      # End node configuration
+├── hooks/
+│   ├── useAutomations.ts    # Fetch automation actions
+│   └── useSimulation.ts     # Run workflow simulation
+├── nodes/
+│   ├── StartNode.tsx        # Start node component
+│   ├── TaskNode.tsx         # Task node component
+│   ├── ApprovalNode.tsx     # Approval node component
+│   ├── AutomatedNode.tsx    # Automated node component
+│   └── EndNode.tsx          # End node component
+├── types/
+│   └── workflow.ts          # TypeScript definitions
+└── pages/
+    └── Index.tsx            # Main application page
 ```
 
-**Edit a file directly in GitHub**
+## Design Decisions
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Architecture
+- **Context-based State**: Single WorkflowContext provides all workflow state and actions
+- **Modular Components**: Each node type has its own component and form
+- **Type Safety**: Full TypeScript with strict typing for all workflow data
+- **Separation of Concerns**: API, UI, and state logic are cleanly separated
 
-**Use GitHub Codespaces**
+### UI/UX
+- **Professional Aesthetic**: Enterprise-grade design with clear visual hierarchy
+- **Color-coded Nodes**: Each node type has a distinct color for quick identification
+- **Responsive Layout**: Three-column layout with sidebar, canvas, and config panel
+- **Accessibility**: Proper labels, focus states, and keyboard navigation
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Mock API
+- `GET /automations` - Returns available automation actions with parameters
+- `POST /simulate` - Accepts workflow JSON and returns execution log
 
-## What technologies are used for this project?
+## Getting Started
 
-This project is built with:
+```bash
+# Install dependencies
+npm install
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+# Start development server
+npm run dev
 
-## How can I deploy this project?
+# Build for production
+npm run build
+```
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+## Usage
 
-## Can I connect a custom domain to my Lovable project?
+1. **Drag nodes** from the left sidebar onto the canvas
+2. **Connect nodes** by dragging from output handle to input handle
+3. **Click a node** to configure its properties in the right panel
+4. **Test workflow** using the "Test Workflow" button
+5. **Export/Import** workflows as JSON files
 
-Yes, you can!
+## Technologies
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+- **React 18** - UI framework
+- **TypeScript** - Type safety
+- **@xyflow/react** - Flow diagram library
+- **Tailwind CSS** - Styling
+- **Shadcn/ui** - Component library
+- **React Query** - Data fetching
+- **Zod** - Schema validation
