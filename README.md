@@ -108,4 +108,5 @@ npm run build
 - **Zod** - Schema validation
 
 ## Images
-<img width="1327" height="895" alt="image" src="https://github.com/user-attachments/assets/0bd2e705-7904-450c-8c82-5113739be6c4" />
+
+<img width="1881" height="883" alt="image" src="https://github.com/user-attachments/assets/109a595b-483c-4efd-a0ab-38bd2d03f350" />
